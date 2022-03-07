@@ -21,16 +21,15 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
+      test: /\.html$/i,
+      use: ['html-loader']
+      },
+      {
         test: /\.(png|svg|jpg|jpeg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: './images/',
-            },
-          },
-        ],
+        type: 'asset/resource',
+        generator: {
+          filename: './images/[name][ext]'
+        }
       },
     ],
   },
